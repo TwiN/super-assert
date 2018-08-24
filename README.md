@@ -1,10 +1,12 @@
 # super-assert
 
-Heavily inspired by Spring Framework's Assert class in `org.springframework.util` and JUnit's assertion library,
-SuperAssert's goal is to provide a complete one-line assertion solution with custom exception support.
+Heavily inspired by Spring Framework's 
+[Assert](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/Assert.html) 
+class in `org.springframework.util` and JUnit's assertion library, SuperAssert's goal is to provide a complete
+ one-line assertion solution with custom exception support.
 
-By providing a one-line solution, developers will minimize the amount of lines taken by minor, but sometimes numerous 
-checks like this:
+By providing a one-line solution, developers significantly enhance the readability of their code by reducing 
+the amount of lines taken by minor, but sometimes numerous checks like this:
 
 ```java
 if (username == null || username.length == 0) {
@@ -18,7 +20,7 @@ and instead, use an elegant one-line solution like this:
 SuperAssert.isTrue(username == null || username.length == 0, "...");
 ```
 
-In fact, SuperAssert shines even more when you want to give even more details to each specific error cases:
+In fact, SuperAssert shines even more when you want to give more details to each specific error cases:
 
 ```java
 SuperAssert.notNull(username, "Your username cannot be null");
