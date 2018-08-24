@@ -63,6 +63,92 @@ public User getUserById(Long id) {
 ```
 
 
+## Current API
+
+
+### notNull
+
+**Syntax**: `SuperAssert.notNull(object, message | exception)`
+
+Asserts whether an object is not null. 
+- If it is null, an exception will be thrown
+- If it isn't null, `true` will be returned 
+
+#### Example
+
+This will throw an exception, because the assertion that the `user` is `notNull` is **wrong**. _(the user is null)_
+```java
+User user = null;
+SuperAssert.notNull(user, "User cannot be null"); 
+```
+This will return `true`, because the assertion that the `user` is `notNull` is **correct**. _(the user is not null)_
+```java
+User user = new User();
+SuperAssert.notNull(user, "User cannot be null"); 
+```
+
+
+### isTrue
+
+**Syntax**: `SuperAssert.isTrue(object, message | exception)`
+
+Asserts whether a boolean is true. 
+- If it is `true`, `true` will be returned
+- If it is `false`, an exception will be thrown
+
+#### Example
+
+This will throw an exception, because the assertion that the `title.isEmpty()` condition `isTrue` is **wrong**. _(the title is not empty)_
+```java
+String title = "Some pretty cool title";
+SuperAssert.isTrue(title.isEmpty(), "Title cannot be empty"); 
+```
+This will return `true`, because the assertion that the `title.isEmpty()` condition `isTrue` is **correct**. _(the title is empty)_
+```java
+String title = "";
+SuperAssert.isTrue(title.isEmpty(), "Title cannot be empty"); 
+```
+
+
+### isFalse
+
+**Syntax**: `SuperAssert.isFalse(object, message | exception)`
+
+Asserts whether a boolean is false. 
+- If it is `true`, an exception will be thrown
+- If it is `false`, `true` will be returned
+
+#### Example
+
+This will throw an exception, because the assertion that the `locked` condition `isFalse` is **wrong**.
+```java
+boolean locked = true;
+SuperAssert.isFalse(closed, "The door is locked, you can't get in!"); 
+```
+This will return `true`, because the assertion that the `locked` condition `isFalse` is **correct**.
+```java
+boolean locked = false;
+SuperAssert.isFalse(closed, "The door is locked, you can't get in!"); 
+```
+
+
+
+## Using custom exceptions
+
+Using custom exceptions involves passing the exception message as parameter to your custom exception and
+then passing that custom exception as parameter instead of the message in the SuperAssert method.
+
+e.g.
+```java
+SuperAssert.notNull(user, "User cannot be null"); 
+```
+translates to 
+```java
+SuperAssert.notNull(user, new CustomException("User cannot be null")); 
+```
+
+
+
 ## TODO
 
 **NOTE**: The naming is not fixed. If you have a better idea, feel free to use it.
