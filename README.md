@@ -52,6 +52,7 @@ SuperAssert.notNull(object, "The object passed as parameter cannot be null");
 SuperAssert.notNull(object, new CustomException("The object passed as parameter cannot be null"));
 ```
 
+----------------------
 
 ## Real world examples
 
@@ -61,6 +62,8 @@ public User getUserById(Long id) {
 	return userRepository.findById(id).orElse(null);
 }
 ```
+
+----------------------
 
 
 ## Current API
@@ -76,12 +79,12 @@ Asserts whether an object is not null.
 
 #### Example
 
-This will throw an exception, because the assertion that the `user` is `notNull` is **wrong**. _(the user is null)_
+This will throw an exception, because the assertion that the `user` is `notNull` is **wrong** _(the user is null)_:
 ```java
 User user = null;
 SuperAssert.notNull(user, "User cannot be null"); 
 ```
-This will return `true`, because the assertion that the `user` is `notNull` is **correct**. _(the user is not null)_
+This will return `true`, because the assertion that the `user` is `notNull` is **correct** _(the user is not null)_:
 ```java
 User user = new User();
 SuperAssert.notNull(user, "User cannot be null"); 
@@ -98,12 +101,12 @@ Asserts whether a boolean is true.
 
 #### Example
 
-This will throw an exception, because the assertion that the `title.isEmpty()` condition `isTrue` is **wrong**. _(the title is not empty)_
+This will throw an exception, because the assertion that the `title.isEmpty()` condition `isTrue` is **wrong** _(the title is not empty)_:
 ```java
 String title = "Some pretty cool title";
 SuperAssert.isTrue(title.isEmpty(), "Title cannot be empty"); 
 ```
-This will return `true`, because the assertion that the `title.isEmpty()` condition `isTrue` is **correct**. _(the title is empty)_
+This will return `true`, because the assertion that the `title.isEmpty()` condition `isTrue` is **correct** _(the title is empty)_:
 ```java
 String title = "";
 SuperAssert.isTrue(title.isEmpty(), "Title cannot be empty"); 
@@ -120,18 +123,18 @@ Asserts whether a boolean is false.
 
 #### Example
 
-This will throw an exception, because the assertion that the `locked` condition `isFalse` is **wrong**.
+This will throw an exception, because the assertion that the `locked` condition `isFalse` is **wrong**:
 ```java
 boolean locked = true;
 SuperAssert.isFalse(closed, "The door is locked, you can't get in!"); 
 ```
-This will return `true`, because the assertion that the `locked` condition `isFalse` is **correct**.
+This will return `true`, because the assertion that the `locked` condition `isFalse` is **correct**:
 ```java
 boolean locked = false;
 SuperAssert.isFalse(closed, "The door is locked, you can't get in!"); 
 ```
 
-
+----------------------
 
 ## Using custom exceptions
 
@@ -147,7 +150,7 @@ translates to
 SuperAssert.notNull(user, new CustomException("User cannot be null")); 
 ```
 
-
+----------------------
 
 ## TODO
 
