@@ -16,6 +16,7 @@ nbdist/
 
 ### OTHERS ###
 target/
-frontend/node_modules/
 *.log
 logs
+*.iml
+.idea
