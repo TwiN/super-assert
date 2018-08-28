@@ -2,6 +2,9 @@ package org.twinnation.superassert;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import static org.junit.Assert.*;
 
 
@@ -56,6 +59,70 @@ public class SuperAssertTest {
 	@Test(expected = CustomException.class)
 	public void isTrue_withCustomExceptionAndFalseCondition() throws Exception {
 		SuperAssert.isTrue(false, new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
+	}
+	
+	
+	@Test
+	public void notEmpty() {
+		assertTrue("List passed is not empty, no exception should have been thrown",
+			SuperAssert.notEmpty(Arrays.asList(1, 2, 3), "EXCEPTION_MESSAGE"));
+	}
+	
+	
+	@Test(expected = Exception.class)
+	public void notEmpty_withEmptyList() {
+		SuperAssert.notEmpty(Collections.emptyList(), "EXCEPTION_MESSAGE");
+	}
+	
+	
+	@Test
+	public void notEmpty_withCustomException() throws Exception {
+		assertTrue("List passed is not empty, no exception should have been thrown",
+			SuperAssert.notEmpty(Arrays.asList(1, 2, 3), new CustomException("CUSTOM_EXCEPTION_MESSAGE")));
+	}
+	
+	
+	@Test(expected = CustomException.class)
+	public void notEmpty_withCustomExceptionAndEmptyList() throws Exception {
+		SuperAssert.notEmpty(Collections.emptyList(), new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
+	}
+	
+	
+	@Test
+	public void notEmptyOrNull() {
+		assertTrue("List passed is not empty or null, no exception should have been thrown",
+			SuperAssert.notEmpty(Arrays.asList(1, 2, 3), "EXCEPTION_MESSAGE"));
+	}
+	
+	
+	@Test(expected = Exception.class)
+	public void notEmptyOrNull_withEmptyList() {
+		SuperAssert.notEmpty(Collections.emptyList(), "EXCEPTION_MESSAGE");
+	}
+	
+	
+	@Test(expected = Exception.class)
+	public void notEmptyOrNull_withNullList() {
+		SuperAssert.notEmptyOrNull(null, "EXCEPTION_MESSAGE");
+	}
+	
+	
+	@Test
+	public void notEmptyOrNull_withCustomException() throws Exception {
+		assertTrue("List passed is not empty or null, no exception should have been thrown",
+			SuperAssert.notEmptyOrNull(Arrays.asList(1, 2, 3), new CustomException("CUSTOM_EXCEPTION_MESSAGE")));
+	}
+	
+	
+	@Test(expected = CustomException.class)
+	public void notEmptyOrNull_withCustomExceptionAndEmptyList() throws Exception {
+		SuperAssert.notEmptyOrNull(Collections.emptyList(), new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
+	}
+	
+	
+	@Test(expected = CustomException.class)
+	public void notEmptyOrNull_withCustomExceptionAndNullList() throws Exception {
+		SuperAssert.notEmptyOrNull(null, new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
 	}
 	
 	

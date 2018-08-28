@@ -1,6 +1,9 @@
 package org.twinnation.superassert;
 
 
+import java.util.List;
+
+
 public class SuperAssert {
 	
 	public static boolean notNull(Object object, String message) {
@@ -42,6 +45,32 @@ public class SuperAssert {
 	
 	public static <T extends Exception> boolean isFalse(boolean b, T customException) throws T {
 		return isTrue(!b, customException);
+	}
+	
+	
+	public static boolean notEmpty(List<?> list, String message) {
+		if (list.isEmpty()) {
+			throw new IllegalArgumentException(message);
+		}
+		return true;
+	}
+	
+	
+	public static <T extends Exception> boolean notEmpty(List<?> list, T customException) throws T {
+		if (list.isEmpty()) {
+			throw customException;
+		}
+		return true;
+	}
+	
+	
+	public static boolean notEmptyOrNull(List<?> list, String message) {
+		return notNull(list, message) && notEmpty(list, message);
+	}
+	
+	
+	public static <T extends Exception> boolean notEmptyOrNull(List<?> list, T customException) throws T {
+		return notNull(list, customException) && notEmpty(list, customException);
 	}
 
 }
