@@ -1,7 +1,7 @@
 package org.twinnation.superassert;
 
-import org.twinnation.superassert.constraint.annotation.NotNull;
-import org.twinnation.superassert.constraint.annotation.Nullable;
+import org.twinnation.superassert.annotation.NotNull;
+import org.twinnation.superassert.annotation.Nullable;
 
 import java.util.List;
 

@@ -213,6 +213,12 @@ public class SuperAssertTest {
 	
 	
 	@Test(expected = IllegalArgumentException.class)
+	public void isAscii_withNullString() {
+		SuperAssert.isAscii(null, "EXCEPTION_MESSAGE");
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
 	public void isAscii_withNonAsciiString() {
 		SuperAssert.isAscii("abc\ndef", "EXCEPTION_MESSAGE");
 	}
@@ -255,6 +261,12 @@ public class SuperAssertTest {
 	
 	
 	@Test(expected = IllegalArgumentException.class)
+	public void isAlphanumeric_withNullString() {
+		SuperAssert.isAlphanumeric(null, "EXCEPTION_MESSAGE");
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
 	public void isAlphanumeric_withNonAlphanumericString() {
 		SuperAssert.isAlphanumeric("hello, world!", "EXCEPTION_MESSAGE");
 	}
@@ -284,10 +296,10 @@ public class SuperAssertTest {
 	}
 	
 	
-	/*@Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void hasLength_withNullString() {
 		SuperAssert.hasLength(null, 0, "EXCEPTION_MESSAGE");
-	}*/
+	}
 	
 	
 	@Test(expected = IllegalArgumentException.class)
