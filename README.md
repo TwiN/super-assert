@@ -25,7 +25,9 @@ In fact, SuperAssert shines even more when you want to give more details to each
 ```java
 SuperAssert.notNull(username, "Your username cannot be null");
 SuperAssert.isFalse(username.isEmpty(), "Your username cannot be blank");
-SuperAssert.isFalse(getUserByUsername(username), "The username you selected is already taken");
+SuperAssert.isAlphanumeric(username, "Your username must contain only alphanumeric characters");
+SuperAssert.isNull(getUserByUsername(username), "The username you selected is already taken by another user");
+SuperAssert.isAscii(password, "Your password cannot use illegal characters");
 ```
 
 As this project is currently in progress, you're welcome to contribute.

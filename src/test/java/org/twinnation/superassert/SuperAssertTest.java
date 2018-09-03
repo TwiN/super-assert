@@ -10,10 +10,14 @@ import static org.junit.Assert.*;
 
 public class SuperAssertTest {
 	
+	/////////////
+	// notNull //
+	/////////////
+	
+	
 	@Test
 	public void notNull() {
-		assertTrue("Object passed is not null, no exception should have been thrown",
-			SuperAssert.notNull(new Integer(1), "EXCEPTION_MESSAGE"));
+		assertTrue("Object passed is not null", SuperAssert.notNull(new Object(), "This should not throw an exception"));
 	}
 	
 	
@@ -25,8 +29,8 @@ public class SuperAssertTest {
 	
 	@Test
 	public void notNull_withCustomException() throws Exception {
-		assertTrue("Object passed is not null, no exception should have been thrown",
-			SuperAssert.notNull(new Integer(1), new CustomException("CUSTOM_EXCEPTION_MESSAGE")));
+		assertTrue("Object passed is not null",
+			SuperAssert.notNull(new Object(), new CustomException("This should not throw an exception")));
 	}
 	
 	
@@ -34,6 +38,40 @@ public class SuperAssertTest {
 	public void notNull_withCustomExceptionAndNullObject() throws Exception {
 		SuperAssert.notNull(null, new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
 	}
+	
+	
+	/////////////
+	// isNull //
+	/////////////
+	
+	
+	@Test
+	public void isNull() {
+		assertTrue("Object passed is null", SuperAssert.isNull(null, "This should not throw an exception"));
+	}
+	
+	
+	@Test(expected = Exception.class)
+	public void isNull_withNotNullObject() {
+		SuperAssert.isNull(new Object(), "EXCEPTION_MESSAGE");
+	}
+	
+	
+	@Test
+	public void isNull_withCustomException() throws Exception {
+		assertTrue("Object passed is null", SuperAssert.isNull(null, new CustomException("This should not throw an exception")));
+	}
+	
+	
+	@Test(expected = CustomException.class)
+	public void isNull_withCustomExceptionAndNotNullObject() throws Exception {
+		SuperAssert.isNull(new Object(), new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
+	}
+	
+	
+	////////////
+	// isTrue //
+	////////////
 	
 	
 	@Test
@@ -44,15 +82,14 @@ public class SuperAssertTest {
 	
 	@Test(expected = Exception.class)
 	public void isTrue_withFalseCondition() {
-		assertTrue("Condition passed is false, an exception should have been thrown",
-			SuperAssert.isTrue(false, "EXCEPTION_MESSAGE"));
+		SuperAssert.isTrue(false, "EXCEPTION_MESSAGE");
 	}
 	
 	
 	@Test
 	public void isTrue_withCustomException() throws Exception {
-		assertTrue("Condition passed is true, no exception should be thrown",
-			SuperAssert.isTrue(true, new CustomException("CUSTOM_EXCEPTION_MESSAGE")));
+		assertTrue("Condition passed is true",
+			SuperAssert.isTrue(true, new CustomException("This should not throw an exception")));
 	}
 	
 	
@@ -60,6 +97,11 @@ public class SuperAssertTest {
 	public void isTrue_withCustomExceptionAndFalseCondition() throws Exception {
 		SuperAssert.isTrue(false, new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
 	}
+	
+	
+	////////////
+	// isFalse //
+	////////////
 	
 	
 	@Test
@@ -72,6 +114,11 @@ public class SuperAssertTest {
 	public void isFalse_withTrueCondition() {
 		SuperAssert.isFalse(true, "This should throw an exception");
 	}
+	
+	
+	//////////////
+	// notEmpty //
+	//////////////
 	
 	
 	@Test
@@ -98,6 +145,11 @@ public class SuperAssertTest {
 	public void notEmpty_withCustomExceptionAndEmptyList() throws Exception {
 		SuperAssert.notEmpty(Collections.emptyList(), new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
 	}
+	
+	
+	////////////////////
+	// notEmptyOrNull //
+	////////////////////
 	
 	
 	@Test
@@ -138,9 +190,13 @@ public class SuperAssertTest {
 	}
 	
 	
+	/////////////
+	// isAscii //
+	/////////////
+	
+	
 	@Test
 	public void isAscii() {
-		// string
 		assertTrue("String only has ASCII characters",
 			SuperAssert.isAscii("!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHI", "This should not throw an exception"));
 		assertTrue("String only has ASCII characters",
@@ -149,7 +205,6 @@ public class SuperAssertTest {
 			SuperAssert.isAscii("stuvwxyz{|}~ ", "This should not throw an exception"));
 		assertTrue("String only has ASCII characters",
 			SuperAssert.isAscii("", "This should not throw an exception"));
-		// character
 		assertTrue("Character is ASCII", SuperAssert.isAscii('a', "This should not throw an exception"));
 		assertTrue("Character is ASCII", SuperAssert.isAscii('A', "This should not throw an exception"));
 		assertTrue("Character is ASCII", SuperAssert.isAscii('@', "This should not throw an exception"));
@@ -180,6 +235,40 @@ public class SuperAssertTest {
 	public void isAscii_withCustomExceptionAndNonAsciiCharacter() throws Exception {
 		SuperAssert.isAscii('\n', new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
 	}
+	
+	
+	////////////////////
+	// isAlphanumeric //
+	////////////////////
+	
+	
+	@Test
+	public void isAlphanumeric() {
+		assertTrue("String is alphanumeric", SuperAssert.isAscii("abcdefgxyz", "This should not throw an exception"));
+		assertTrue("String is alphanumeric", SuperAssert.isAscii("ABCDEFGXYZ", "This should not throw an exception"));
+		assertTrue("String is alphanumeric", SuperAssert.isAscii("0123456789", "This should not throw an exception"));
+		assertTrue("Character is alphanumeric", SuperAssert.isAscii('a', "This should not throw an exception"));
+		assertTrue("Character is alphanumeric", SuperAssert.isAscii('A', "This should not throw an exception"));
+		assertTrue("Character is alphanumeric", SuperAssert.isAscii('0', "This should not throw an exception"));
+		assertTrue("Character is alphanumeric", SuperAssert.isAscii('9', "This should not throw an exception"));
+	}
+	
+	
+	@Test(expected = Exception.class)
+	public void isAlphanumeric_withNonAlphanumericString() {
+		SuperAssert.isAlphanumeric("hello, world!", "EXCEPTION_MESSAGE");
+	}
+	
+	
+	@Test(expected = Exception.class)
+	public void isAlphanumeric_withNonAlphanumericCharacter() {
+		SuperAssert.isAlphanumeric(' ', "EXCEPTION_MESSAGE");
+	}
+	
+	
+	///////////
+	// OTHER //
+	///////////
 	
 	
 	static class CustomException extends Exception {
