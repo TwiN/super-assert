@@ -63,6 +63,16 @@ public User getUserById(Long id) {
 	SuperAssert.notNull(id, "A user cannot have a null id.");
 	return userRepository.findById(id).orElse(null);
 }
+
+
+public User createUser(String username, String password) {
+	SuperAssert.notNull(username, "Username cannot be null");
+	SuperAssert.notNull(password, "Password cannot be null");
+	SuperAssert.isAlphanumeric(username, "Username can only contain the following: a-z A-Z 0-9");
+	SuperAssert.isAscii(password, "Password contains invalid character");
+	SuperAssert.isNull(getUserByUsername(username), "Username is already taken");
+	return userRepository.save(new User(username, hash(password)));
+}
 ```
 
 ----------------------
@@ -90,6 +100,28 @@ This will return `true`, because the assertion that the `user` is `notNull` is *
 ```java
 User user = new User();
 SuperAssert.notNull(user, "User cannot be null"); 
+```
+
+
+### isNull
+
+**Syntax**: `SuperAssert.isNull(object, message | exception)`
+
+Asserts whether an object is null. 
+- If it is not null, an exception will be thrown
+- If it is null, `true` will be returned 
+
+#### Example
+
+This will throw an exception, because the assertion that the `user` `isNull` is **wrong** _(the user is not null)_:
+```java
+User user = new User();
+SuperAssert.notNull(user, "User already exists"); 
+```
+This will return `true`, because the assertion that the `user` `isNull` is **correct** _(the user is null)_:
+```java
+User user = null;
+SuperAssert.notNull(user, "User already exists"); 
 ```
 
 
