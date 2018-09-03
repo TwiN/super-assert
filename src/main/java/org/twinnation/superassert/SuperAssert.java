@@ -1,6 +1,5 @@
 package org.twinnation.superassert;
 
-
 import java.util.List;
 
 
@@ -38,7 +37,7 @@ public class SuperAssert {
 
 	
 	public static boolean isFalse(boolean b, String message) {
-		return isTrue(!b, message);
+		return isFalse(b, new IllegalArgumentException(message));
 	}
 	
 	
@@ -62,6 +61,29 @@ public class SuperAssert {
 	
 	public static boolean notEmptyOrNull(List<?> list, String message) {
 		return notNull(list, message) && notEmpty(list, message);
+	}
+	
+	
+	public static <T extends Exception> boolean isAscii(String str, T customException) throws T {
+		for (char c : str.toCharArray()) {
+			isAscii(c, customException);
+		}
+		return true;
+	}
+	
+	
+	public static boolean isAscii(String str, String message) {
+		return isAscii(str, new IllegalArgumentException(message));
+	}
+	
+	
+	public static <T extends Exception> boolean isAscii(char c, T customException) throws T {
+		return isTrue((int)c > 31 && (int)c < 127, customException);
+	}
+	
+	
+	public static boolean isAscii(char c, String message) {
+		return isAscii(c, new IllegalArgumentException(message));
 	}
 
 }
