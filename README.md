@@ -32,6 +32,23 @@ SuperAssert.isAscii(password, "Your password cannot use illegal characters");
 
 As this project is currently in progress, you're welcome to contribute.
 
+## Table of Contents
+
+* [Usage](#usage)
+  + [Without custom exception](#without-custom-exception)
+  + [With custom exception](#with-custom-exception)
+* [Real world examples](#real-world-examples)
+* [Current API](#current-api)
+  + [notNull](#notnull)
+  + [isNull](#isnull)
+  + [isTrue](#istrue)
+  + [isFalse](#isfalse)
+  + [notEmpty](#notempty)
+  + [notEmptyOrNull](#notemptyornull)
+  + [isAscii](#isascii)
+  + [isAlphanumeric](#isalphanumeric)
+* [TODO](#todo)
+
 
 ## Usage
 
@@ -50,9 +67,24 @@ SuperAssert.notNull(object, "The object passed as parameter cannot be null");
 
 ### With custom exception
 
+Using custom exceptions involves passing the exception message as parameter to your custom exception and
+then passing that custom exception as parameter instead of the message in the SuperAssert method.
+
 ```java
 SuperAssert.notNull(object, new CustomException("The object passed as parameter cannot be null"));
 ```
+
+Going from using the default exception chosen by SuperAssert to a custom exception:
+
+```java
+SuperAssert.notNull(user, "User cannot be null"); 
+```
+translates to 
+```java
+SuperAssert.notNull(user, new CustomException("User cannot be null")); 
+```
+
+
 
 ----------------------
 
@@ -261,22 +293,6 @@ String username = "J0hnD03";
 SuperAssert.isAscii(username, "Username must be alphanumeric (a-z A-Z 0-9)");
 ```
 
-
-----------------------
-
-## Using custom exceptions
-
-Using custom exceptions involves passing the exception message as parameter to your custom exception and
-then passing that custom exception as parameter instead of the message in the SuperAssert method.
-
-e.g.
-```java
-SuperAssert.notNull(user, "User cannot be null"); 
-```
-translates to 
-```java
-SuperAssert.notNull(user, new CustomException("User cannot be null")); 
-```
 
 ----------------------
 
