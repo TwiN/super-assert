@@ -21,7 +21,7 @@ public class SuperAssertTest {
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void notNull_withNullObject() {
 		SuperAssert.notNull(null, "EXCEPTION_MESSAGE");
 	}
@@ -40,9 +40,9 @@ public class SuperAssertTest {
 	}
 	
 	
-	/////////////
+	////////////
 	// isNull //
-	/////////////
+	////////////
 	
 	
 	@Test
@@ -51,7 +51,7 @@ public class SuperAssertTest {
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void isNull_withNotNullObject() {
 		SuperAssert.isNull(new Object(), "EXCEPTION_MESSAGE");
 	}
@@ -80,7 +80,7 @@ public class SuperAssertTest {
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void isTrue_withFalseCondition() {
 		SuperAssert.isTrue(false, "EXCEPTION_MESSAGE");
 	}
@@ -99,9 +99,9 @@ public class SuperAssertTest {
 	}
 	
 	
-	////////////
+	/////////////
 	// isFalse //
-	////////////
+	/////////////
 	
 	
 	@Test
@@ -110,9 +110,9 @@ public class SuperAssertTest {
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void isFalse_withTrueCondition() {
-		SuperAssert.isFalse(true, "This should throw an exception");
+		SuperAssert.isFalse(true, "EXCEPTION_MESSAGE");
 	}
 	
 	
@@ -123,12 +123,12 @@ public class SuperAssertTest {
 	
 	@Test
 	public void notEmpty() {
-		assertTrue("List passed is not empty, no exception should have been thrown",
-			SuperAssert.notEmpty(Arrays.asList(1, 2, 3), "EXCEPTION_MESSAGE"));
+		assertTrue("List passed is not empty",
+			SuperAssert.notEmpty(Arrays.asList(1, 2, 3), "This should not throw an exception"));
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void notEmpty_withEmptyList() {
 		SuperAssert.notEmpty(Collections.emptyList(), "EXCEPTION_MESSAGE");
 	}
@@ -136,8 +136,8 @@ public class SuperAssertTest {
 	
 	@Test
 	public void notEmpty_withCustomException() throws Exception {
-		assertTrue("List passed is not empty, no exception should have been thrown",
-			SuperAssert.notEmpty(Arrays.asList(1, 2, 3), new CustomException("CUSTOM_EXCEPTION_MESSAGE")));
+		assertTrue("List passed is not empty",
+			SuperAssert.notEmpty(Arrays.asList(1, 2, 3), new CustomException("This should not throw an exception")));
 	}
 	
 	
@@ -154,18 +154,18 @@ public class SuperAssertTest {
 	
 	@Test
 	public void notEmptyOrNull() {
-		assertTrue("List passed is not empty or null, no exception should have been thrown",
-			SuperAssert.notEmpty(Arrays.asList(1, 2, 3), "EXCEPTION_MESSAGE"));
+		assertTrue("List passed is not empty or null",
+			SuperAssert.notEmpty(Arrays.asList(1, 2, 3), "This should not throw an exception"));
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void notEmptyOrNull_withEmptyList() {
 		SuperAssert.notEmpty(Collections.emptyList(), "EXCEPTION_MESSAGE");
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void notEmptyOrNull_withNullList() {
 		SuperAssert.notEmptyOrNull(null, "EXCEPTION_MESSAGE");
 	}
@@ -173,8 +173,8 @@ public class SuperAssertTest {
 	
 	@Test
 	public void notEmptyOrNull_withCustomException() throws Exception {
-		assertTrue("List passed is not empty or null, no exception should have been thrown",
-			SuperAssert.notEmptyOrNull(Arrays.asList(1, 2, 3), new CustomException("CUSTOM_EXCEPTION_MESSAGE")));
+		assertTrue("List passed is not empty or null",
+			SuperAssert.notEmptyOrNull(Arrays.asList(1, 2, 3), new CustomException("This should not throw an exception")));
 	}
 	
 	
@@ -212,13 +212,13 @@ public class SuperAssertTest {
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void isAscii_withNonAsciiString() {
 		SuperAssert.isAscii("abc\ndef", "EXCEPTION_MESSAGE");
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void isAscii_withNonAsciiCharacter() {
 		SuperAssert.isAscii((char)127, "EXCEPTION_MESSAGE");
 	}
@@ -254,15 +254,75 @@ public class SuperAssertTest {
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void isAlphanumeric_withNonAlphanumericString() {
 		SuperAssert.isAlphanumeric("hello, world!", "EXCEPTION_MESSAGE");
 	}
 	
 	
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void isAlphanumeric_withNonAlphanumericCharacter() {
 		SuperAssert.isAlphanumeric(' ', "EXCEPTION_MESSAGE");
+	}
+	
+	
+	///////////////
+	// hasLength //
+	///////////////
+	
+	
+	@Test
+	public void hasLength() {
+		assertTrue("String has a valid length", SuperAssert.hasLength("abc", 2, 4, "This should not throw an exception"));
+		assertTrue("String has a valid length", SuperAssert.hasLength("abc", 3, 3, "This should not throw an exception"));
+		assertTrue("String has a valid length", SuperAssert.hasLength("abc", 0, 9, "This should not throw an exception"));
+		assertTrue("String has a valid length", SuperAssert.hasLength("abc", 3, 9, "This should not throw an exception"));
+		assertTrue("String has a valid length", SuperAssert.hasLength("abc", 0, 3, "This should not throw an exception"));
+		assertTrue("String has a valid length", SuperAssert.hasLength("abc", 0, "This should not throw an exception"));
+		assertTrue("String has a valid length", SuperAssert.hasLength("abcd", 4, "This should not throw an exception"));
+		assertTrue("String has a valid length", SuperAssert.hasLength("abcde", 4, "This should not throw an exception"));
+	}
+	
+	
+	/*@Test(expected = IllegalArgumentException.class)
+	public void hasLength_withNullString() {
+		SuperAssert.hasLength(null, 0, "EXCEPTION_MESSAGE");
+	}*/
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void hasLength_withLengthTooShort() {
+		SuperAssert.hasLength("abc", 6, 14, "EXCEPTION_MESSAGE");
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void hasLength_withLengthTooShortAndNoMaximum() {
+		SuperAssert.hasLength("abc", 6, "EXCEPTION_MESSAGE");
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void hasLength_withLengthTooLong() {
+		SuperAssert.hasLength("abcde", 2, 4, "EXCEPTION_MESSAGE");
+	}
+	
+	
+	@Test(expected = AssertionError.class)
+	public void hasLength_withInvalidLengthParameters() {
+		SuperAssert.hasLength("abc", 6, 5, "EXCEPTION_MESSAGE"); // min has to be higher than max
+	}
+	
+	
+	@Test(expected = AssertionError.class)
+	public void hasLength_withInvalidLengthParametersAgain() {
+		SuperAssert.hasLength("abc", 6, -2, "EXCEPTION_MESSAGE"); // max has to be higher than min, unless it's -1 (no max)
+	}
+	
+	
+	@Test(expected = AssertionError.class)
+	public void hasLength_withNegativeMinLengthParameter() {
+		SuperAssert.hasLength("abc", -1, "EXCEPTION_MESSAGE"); // min cannot be negative
 	}
 	
 	

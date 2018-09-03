@@ -1,11 +1,17 @@
 package org.twinnation.superassert;
 
+import org.twinnation.superassert.constraint.annotation.NotNull;
+import org.twinnation.superassert.constraint.annotation.Nullable;
+
 import java.util.List;
 
 
 public class SuperAssert {
 	
-	public static <T extends Exception> boolean notNull(Object object, T customException) throws T {
+	private static final int NO_MAX_LENGTH = -1;
+	
+	
+	public static <T extends Exception> boolean notNull(@Nullable Object object, T customException) throws T {
 		if (object == null) {
 			throw customException;
 		}
@@ -13,12 +19,12 @@ public class SuperAssert {
 	}
 	
 	
-	public static boolean notNull(Object object, String message) {
+	public static boolean notNull(@Nullable Object object, String message) {
 		return notNull(object, new IllegalArgumentException(message));
 	}
 	
 	
-	public static <T extends Exception> boolean isNull(Object object, T customException) throws T {
+	public static <T extends Exception> boolean isNull(@Nullable Object object, T customException) throws T {
 		if (object != null) {
 			throw customException;
 		}
@@ -26,7 +32,7 @@ public class SuperAssert {
 	}
 	
 	
-	public static boolean isNull(Object object, String message) {
+	public static boolean isNull(@Nullable Object object, String message) {
 		return isNull(object, new IllegalArgumentException(message));
 	}
 	
@@ -54,7 +60,7 @@ public class SuperAssert {
 	}
 	
 	
-	public static <T extends Exception> boolean notEmpty(List<?> list, T customException) throws T {
+	public static <T extends Exception> boolean notEmpty(@NotNull List<?> list, T customException) throws T {
 		if (list.isEmpty()) {
 			throw customException;
 		}
@@ -62,17 +68,17 @@ public class SuperAssert {
 	}
 	
 	
-	public static boolean notEmpty(List<?> list, String message) {
+	public static boolean notEmpty(@NotNull List<?> list, String message) {
 		return notEmpty(list, new IllegalArgumentException(message));
 	}
 	
 	
-	public static <T extends Exception> boolean notEmptyOrNull(List<?> list, T customException) throws T {
+	public static <T extends Exception> boolean notEmptyOrNull(@Nullable List<?> list, T customException) throws T {
 		return notNull(list, customException) && notEmpty(list, customException);
 	}
 	
 	
-	public static boolean notEmptyOrNull(List<?> list, String message) {
+	public static boolean notEmptyOrNull(@Nullable List<?> list, String message) {
 		return notNull(list, message) && notEmpty(list, message);
 	}
 	
@@ -87,7 +93,7 @@ public class SuperAssert {
 	}
 	
 	
-	public static <T extends Exception> boolean isAscii(String str, T customException) throws T {
+	public static <T extends Exception> boolean isAscii(@NotNull String str, T customException) throws T {
 		for (char c : str.toCharArray()) {
 			isAscii(c, customException);
 		}
@@ -95,7 +101,7 @@ public class SuperAssert {
 	}
 	
 	
-	public static boolean isAscii(String str, String message) {
+	public static boolean isAscii(@NotNull String str, String message) {
 		return isAscii(str, new IllegalArgumentException(message));
 	}
 	
@@ -110,7 +116,7 @@ public class SuperAssert {
 	}
 	
 	
-	public static <T extends Exception> boolean isAlphanumeric(String str, T customException) throws T {
+	public static <T extends Exception> boolean isAlphanumeric(@NotNull String str, T customException) throws T {
 		for (char c : str.toCharArray()) {
 			isAlphanumeric(c, customException);
 		}
@@ -118,8 +124,32 @@ public class SuperAssert {
 	}
 	
 	
-	public static boolean isAlphanumeric(String str, String message) {
+	public static boolean isAlphanumeric(@NotNull String str, String message) {
 		return isAlphanumeric(str, new IllegalArgumentException(message));
+	}
+	
+	
+	public static <T extends Exception> boolean hasLength(@NotNull String str, int minLength, int maxLength, T customException) throws T {
+		assert minLength >= 0; // minLength has to be at least 0
+		assert maxLength == NO_MAX_LENGTH || maxLength >= minLength; // if there's a max, it must be higher than the min
+		// Check for maxLength only if the value of maxLength is not NO_MAX_LENGTH
+		return isTrue(str.length() >= minLength && (maxLength == NO_MAX_LENGTH || (str.length() <= maxLength)),
+			customException);
+	}
+	
+	
+	public static boolean hasLength(@NotNull String str, int minLength, int maxLength, String message) {
+		return hasLength(str, minLength, maxLength, new IllegalArgumentException(message));
+	}
+	
+	
+	public static <T extends Exception> boolean hasLength(@NotNull String str, int minLength, T customException) throws T {
+		return hasLength(str, minLength, NO_MAX_LENGTH, customException);
+	}
+	
+	
+	public static boolean hasLength(@NotNull String str, int minLength, String message) {
+		return hasLength(str, minLength, NO_MAX_LENGTH, new IllegalArgumentException(message));
 	}
 
 }
