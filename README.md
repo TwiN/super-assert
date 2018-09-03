@@ -294,19 +294,36 @@ SuperAssert.isAlphanumeric(username, "Username must be alphanumeric (a-z A-Z 0-9
 ```
 
 
+### hasLength
+
+**Syntax**: `SuperAssert.hasLength(string, minLength, [maxLength], message | exception)`
+
+Asserts whether a string respects the minimum and, if application, maximum length. 
+- If it the length constraints are not respected, an exception will be thrown
+- If they are respected, `true` will be returned
+
+The `maxLength` parameter is optional. If you do decide to use a maximum length, keep in mind that it
+has to be higher than the `minLength`. Failure to do so will result in an `AssertionError`.
+
+#### Example
+
+This will throw an exception, because the assertion that the string `password` `hasLength` with `minLength=8` and `maxLength=32` is **wrong**:
+```java
+String password = "secret";
+SuperAssert.hasLength(password, 8, 32, "Your password must be between 8 and 32 characters inclusively"); 
+```
+This will return `true`, because the assertion that the string `password` `hasLength` with `minLength=8` and `maxLength=32` is **correct**:
+```java
+String password = "password123";
+SuperAssert.hasLength(password, 8, 32, "Your password must be between 8 and 32 characters inclusively");
+```
+
+
 ----------------------
 
 ## TODO
 
 **NOTE**: The naming is not fixed. If you have a better idea, feel free to use it.
 
-- hasMoreThanMinLength
-	- `hasMoreThanMinLength(str, minLength, message)`
-	- `hasMoreThanMinLength(str, minLength, customException)`
-- hasLessThanMaxLength
-	- `hasLessThanMaxLength(str, maxLength, message)`
-    - `hasLessThanMaxLength(str, maxLength, customException)`
-- hasBetweenMinAndMaxLength
-	- `hasBetweenMinAndMaxLength(str, minLength, maxLength, message)`
-	- `hasBetweenMinAndMaxLength(str, minLength, maxLength, customException)`
+_There is nothing here yet, if you have any idea, feel free to create an issue or a PR_
 	
