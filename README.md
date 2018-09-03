@@ -47,6 +47,7 @@ As this project is currently in progress, you're welcome to contribute.
   + [notEmptyOrNull](#notemptyornull)
   + [isAscii](#isascii)
   + [isAlphanumeric](#isalphanumeric)
+  + [hasLength](#haslength)
 * [TODO](#todo)
 
 
