@@ -203,7 +203,7 @@ _In essence, this method is just an aggregation of `notNull` and `notEmpty`._
 
 #### Example
 
-This will throw an exception, because the assertion that the list of `users` is `notEmptyOrNull` is **wrong** _(the user list is null):
+This will throw an exception, because the assertion that the list of `users` is `notEmptyOrNull` is **wrong** _(the user list is null)_:
 ```java
 List<User> users = null;
 SuperAssert.notEmpty(users, "The user list cannot be empty or null!"); 
@@ -213,6 +213,54 @@ This will return `true`, because the assertion that the list of `users` is `notE
 List<User> users = Arrays.asList(user1, user2, ...);
 SuperAssert.notEmpty(users, "The user list cannot be empty or null!"); 
 ```
+
+
+### isAscii
+
+**Syntax**: `SuperAssert.isAscii(string | char, message | exception)`
+
+Asserts whether a character/string is a _printable_ ASCII. 
+- If it is not a printable ASCII character, an exception will be thrown
+- If it is, `true` will be returned
+
+**NOTE**: _While the name of this method is `isAscii`, be aware that this assumes **PRINTABLE** 
+ASCII characters. In other words, characters whose value is between 32 and 126 inclusively._
+
+#### Example
+
+This will throw an exception, because the assertion that the string `message` `isAscii` is **wrong**:
+```java
+String message = "Well,\n this is pretty cool!";
+SuperAssert.isAscii(message, "Invalid characters"); 
+```
+This will return `true`, because the assertion that the string `message` `isAscii` is **correct**:
+```java
+String message = "Well, This is pretty cool!";
+SuperAssert.isAscii(message, "Invalid characters");
+```
+
+
+### isAlphanumeric
+
+**Syntax**: `SuperAssert.isAlphanumeric(string | char, message | exception)`
+
+Asserts whether a character/string is alphanumeric. 
+- If it is not alphanumeric, an exception will be thrown
+- If it is, `true` will be returned
+
+#### Example
+
+This will throw an exception, because the assertion that the string `username` `isAlphanumeric` is **wrong**:
+```java
+String username = "John Doe";
+SuperAssert.isAlphanumeric(username, "Username must be alphanumeric (a-z A-Z 0-9)"); 
+```
+This will return `true`, because the assertion that the string `username` `isAlphanumeric` is **correct**:
+```java
+String username = "J0hnD03";
+SuperAssert.isAscii(username, "Username must be alphanumeric (a-z A-Z 0-9)");
+```
+
 
 ----------------------
 
