@@ -134,6 +134,52 @@ boolean locked = false;
 SuperAssert.isFalse(closed, "The door is locked, you can't get in!"); 
 ```
 
+
+### notEmpty
+
+**Syntax**: `SuperAssert.notEmpty(object, message | exception)`
+
+Asserts whether a list is not empty. 
+- If it is empty, an exception will be thrown
+- If it is not empty, `true` will be returned
+
+#### Example
+
+This will throw an exception, because the assertion that the list of `users` is `notEmpty` is **wrong**:
+```java
+List<User> users = new ArrayList<>();
+SuperAssert.notEmpty(users, "The user list cannot be empty!"); 
+```
+This will return `true`, because the assertion that the list of `users` is `notEmpty` is **correct**:
+```java
+List<User> users = Arrays.asList(user1, user2, ...);
+SuperAssert.notEmpty(users, "The user list cannot be empty!"); 
+```
+
+
+### notEmptyOrNull
+
+**Syntax**: `SuperAssert.notEmptyOrNull(object, message | exception)`
+
+Asserts whether a list is not empty or null. 
+- If it is empty or null, an exception will be thrown
+- If it is not empty or null, `true` will be returned
+
+_In essence, this method is just an aggregation of `notNull` and `notEmpty`._
+
+#### Example
+
+This will throw an exception, because the assertion that the list of `users` is `notEmptyOrNull` is **wrong** _(the user list is null):
+```java
+List<User> users = null;
+SuperAssert.notEmpty(users, "The user list cannot be empty or null!"); 
+```
+This will return `true`, because the assertion that the list of `users` is `notEmptyOrNull` is **correct**:
+```java
+List<User> users = Arrays.asList(user1, user2, ...);
+SuperAssert.notEmpty(users, "The user list cannot be empty or null!"); 
+```
+
 ----------------------
 
 ## Using custom exceptions
