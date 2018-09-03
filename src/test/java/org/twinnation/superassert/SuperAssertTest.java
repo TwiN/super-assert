@@ -63,6 +63,18 @@ public class SuperAssertTest {
 	
 	
 	@Test
+	public void isFalse() {
+		assertTrue("Condition passed is false", SuperAssert.isFalse(false, "This should not throw an exception"));
+	}
+	
+	
+	@Test(expected = Exception.class)
+	public void isFalse_withTrueCondition() {
+		SuperAssert.isFalse(true, "This should throw an exception");
+	}
+	
+	
+	@Test
 	public void notEmpty() {
 		assertTrue("List passed is not empty, no exception should have been thrown",
 			SuperAssert.notEmpty(Arrays.asList(1, 2, 3), "EXCEPTION_MESSAGE"));
