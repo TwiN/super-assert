@@ -94,6 +94,7 @@ public class SuperAssert {
 	
 	
 	public static <T extends Exception> boolean isAscii(@NotNull String str, T customException) throws T {
+		notNull(str, "Type checked against must not be null");
 		for (char c : str.toCharArray()) {
 			isAscii(c, customException);
 		}
@@ -117,6 +118,7 @@ public class SuperAssert {
 	
 	
 	public static <T extends Exception> boolean isAlphanumeric(@NotNull String str, T customException) throws T {
+		notNull(str, "Type checked against must not be null");
 		for (char c : str.toCharArray()) {
 			isAlphanumeric(c, customException);
 		}
@@ -132,6 +134,7 @@ public class SuperAssert {
 	public static <T extends Exception> boolean hasLength(@NotNull String str, int minLength, int maxLength, T customException) throws T {
 		assert minLength >= 0; // minLength has to be at least 0
 		assert maxLength == NO_MAX_LENGTH || maxLength >= minLength; // if there's a max, it must be higher than the min
+		notNull(str, "Type checked against must not be null");
 		// Check for maxLength only if the value of maxLength is not NO_MAX_LENGTH
 		return isTrue(str.length() >= minLength && (maxLength == NO_MAX_LENGTH || (str.length() <= maxLength)),
 			customException);
