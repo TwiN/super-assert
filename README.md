@@ -1,5 +1,13 @@
 # super-assert
 
+```xml
+<dependency>
+  <groupId>org.twinnation</groupId>
+  <artifactId>super-assert</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
 Heavily inspired by Spring Framework's 
 [Assert](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/Assert.html) 
 class in `org.springframework.util` and JUnit's assertion library, SuperAssert's goal is to provide a complete
@@ -57,16 +65,6 @@ By default, SuperAssert will throw an `IllegalArgumentException` with the messag
 It's very important to understand that `IllegalArgumentException` is an **unchecked exception**, meaning that 
 using SuperAssert does not require you to declare an exception in the method's or in the constructor's `throws` clause
 **unless you specify a custom checked exception**.
-
-Maven dependency:
-
-```xml
-<dependency>
-  <groupId>org.twinnation</groupId>
-  <artifactId>super-assert</artifactId>
-  <version>1.0.0</version>
-</dependency>
-```
 
 
 ### Without custom exception
