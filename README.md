@@ -58,6 +58,16 @@ It's very important to understand that `IllegalArgumentException` is an **unchec
 using SuperAssert does not require you to declare an exception in the method's or in the constructor's `throws` clause
 **unless you specify a custom checked exception**.
 
+Maven dependency:
+
+```xml
+<dependency>
+  <groupId>org.twinnation</groupId>
+  <artifactId>super-assert</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
 
 ### Without custom exception
 
