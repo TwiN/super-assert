@@ -1,5 +1,7 @@
 # super-assert
 
+[![Build Status](https://travis-ci.org/TwinProduction/super-assert.svg?branch=master)](https://travis-ci.org/TwinProduction/super-assert)
+
 ```xml
 <dependency>
   <groupId>org.twinnation</groupId>
