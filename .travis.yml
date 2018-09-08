@@ -8,8 +8,8 @@ install:
   - "mvn -N io.takari:maven:wrapper -Dmaven=${MAVEN_VERSION}"
 
 script:
-  - ./mvnw clean install
+  - "./mvnw clean install -Dgpg.skip"
 
 cache:
-    directories:
-      - $HOME/.m2
+  directories:
+    - $HOME/.m2
