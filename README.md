@@ -45,6 +45,7 @@ As this project is currently in progress, you're welcome to contribute.
 ## Table of Contents
 
 * [Usage](#usage)
+  + [Reading it properly](#reading-it-properly)
   + [Without custom exception](#without-custom-exception)
   + [With custom exception](#with-custom-exception)
 * [Real world examples](#real-world-examples)
