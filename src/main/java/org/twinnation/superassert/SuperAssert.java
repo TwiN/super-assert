@@ -107,16 +107,36 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * Asserts whether c is alphanumeric (A-Z, a-z, 0-9)
+	 * @param c Character to check
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 * @throws T exception to throw if the assertion fails
+	 */
 	public static <T extends Exception> boolean isAlphanumeric(char c, T customException) throws T {
 		return isTrue(Character.isLetterOrDigit(c), customException);
 	}
 	
 	
+	/**
+	 * Asserts whether c is alphanumeric (A-Z, a-z, 0-9)
+	 * @param c Character to check
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 */
 	public static boolean isAlphanumeric(char c, String message) {
 		return isAlphanumeric(c, new IllegalArgumentException(message));
 	}
 	
 	
+	/**
+	 * Asserts whether str is alphanumeric (A-Z, a-z, 0-9)
+	 * @param str String to check
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 * @throws T exception to throw if the assertion fails
+	 */
 	public static <T extends Exception> boolean isAlphanumeric(@NotNull String str, T customException) throws T {
 		notNull(str, "Type checked against must not be null");
 		for (char c : str.toCharArray()) {
@@ -126,11 +146,27 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * Asserts whether str is alphanumeric (A-Z, a-z, 0-9)
+	 * @param str String to check
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 */
 	public static boolean isAlphanumeric(@NotNull String str, String message) {
 		return isAlphanumeric(str, new IllegalArgumentException(message));
 	}
 	
 	
+	/**
+	 * Asserts whether str has a length of at least minLength and at most maxLength.
+	 * If the maximum length is -1, there's no maximum length.
+	 * @param str String to check
+	 * @param minLength Minimum length
+	 * @param maxLength Maximum length
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 * @throws T exception to throw if the assertion fails
+	 */
 	public static <T extends Exception> boolean hasLength(@NotNull String str, int minLength, int maxLength, T customException) throws T {
 		assert minLength >= 0; // minLength has to be at least 0
 		assert maxLength == NO_MAX_LENGTH || maxLength >= minLength; // if there's a max, it must be higher than the min
@@ -141,16 +177,40 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * Asserts whether str has a length of at least minLength and at most maxLength.
+	 * If the maximum length is -1, there's no maximum length.
+	 * @param str String to check
+	 * @param minLength Minimum length
+	 * @param maxLength Maximum length
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 */
 	public static boolean hasLength(@NotNull String str, int minLength, int maxLength, String message) {
 		return hasLength(str, minLength, maxLength, new IllegalArgumentException(message));
 	}
 	
 	
+	/**
+	 * Asserts whether str has a length of at least minLength.
+	 * @param str String to check
+	 * @param minLength Minimum length
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 * @throws T exception to throw if the assertion fails
+	 */
 	public static <T extends Exception> boolean hasLength(@NotNull String str, int minLength, T customException) throws T {
 		return hasLength(str, minLength, NO_MAX_LENGTH, customException);
 	}
 	
 	
+	/**
+	 * Asserts whether str has a length of at least minLength.
+	 * @param str String to check
+	 * @param minLength Minimum length
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 */
 	public static boolean hasLength(@NotNull String str, int minLength, String message) {
 		return hasLength(str, minLength, NO_MAX_LENGTH, new IllegalArgumentException(message));
 	}
