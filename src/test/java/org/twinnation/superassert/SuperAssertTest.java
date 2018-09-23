@@ -9,37 +9,7 @@ import static org.junit.Assert.*;
 
 
 public class SuperAssertTest {
-	
-	/////////////
-	// notNull //
-	/////////////
-	
-	
-	@Test
-	public void notNull() {
-		assertTrue("Object passed is not null", SuperAssert.notNull(new Object(), "This should not throw an exception"));
-	}
-	
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void notNull_withNullObject() {
-		SuperAssert.notNull(null, "EXCEPTION_MESSAGE");
-	}
-	
-	
-	@Test
-	public void notNull_withCustomException() throws Exception {
-		assertTrue("Object passed is not null",
-			SuperAssert.notNull(new Object(), new CustomException("This should not throw an exception")));
-	}
-	
-	
-	@Test(expected = CustomException.class)
-	public void notNull_withCustomExceptionAndNullObject() throws Exception {
-		SuperAssert.notNull(null, new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
-	}
-	
-	
+
 	////////////
 	// isNull //
 	////////////
@@ -335,18 +305,6 @@ public class SuperAssertTest {
 	@Test(expected = AssertionError.class)
 	public void hasLength_withNegativeMinLengthParameter() {
 		SuperAssert.hasLength("abc", -1, "EXCEPTION_MESSAGE"); // min cannot be negative
-	}
-	
-	
-	///////////
-	// OTHER //
-	///////////
-	
-	
-	static class CustomException extends Exception {
-		public CustomException(String message) {
-			super(message);
-		}
 	}
 	
 }
