@@ -13,7 +13,7 @@
 Heavily inspired by Spring Framework's 
 [Assert](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/Assert.html) 
 class in `org.springframework.util` and JUnit's assertion library, SuperAssert's goal is to provide a complete
- one-line assertion solution with custom exception support.
+ one-line assertion solution with custom exception support. _This library is not meant to be used for testing._
 
 By providing a one-line solution, developers significantly enhance the readability of their code by reducing 
 the amount of lines taken by minor, but sometimes numerous checks like this:
@@ -67,6 +67,17 @@ By default, SuperAssert will throw an `IllegalArgumentException` with the messag
 It's very important to understand that `IllegalArgumentException` is an **unchecked exception**, meaning that 
 using SuperAssert does not require you to declare an exception in the method's or in the constructor's `throws` clause
 **unless you specify a custom checked exception**.
+
+### Reading it properly
+
+- The name of the method is what is expected.
+- The first parameter is what is being asserted.
+- The last parameter is what will be thrown if the assertion fails.
+
+e.g. `SuperAssert.isTrue(condition, messageOrException);`
+
+The above would translate to:
+> I'm expecting that `condition` `isTrue` and if it is **not**, then `messageOrException` will be thrown.
 
 
 ### Without custom exception
