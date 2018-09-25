@@ -24,6 +24,13 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * Asserts whether object is null
+	 * @param object Object to check
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 * @throws T exception to throw if the assertion fails
+	 */
 	public static <T extends Exception> boolean isNull(@Nullable Object object, T customException) throws T {
 		if (object != null) {
 			throw customException;
@@ -32,6 +39,12 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * Asserts whether object is null
+	 * @param object Object to check
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 */
 	public static boolean isNull(@Nullable Object object, String message) {
 		return isNull(object, new IllegalArgumentException(message));
 	}
