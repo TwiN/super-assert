@@ -11,6 +11,13 @@ public class SuperAssert {
 	private static final int NO_MAX_LENGTH = -1;
 	
 	
+	/**
+	 * Asserts whether object is not null
+	 * @param object Object to check
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 * @throws T exception to throw if the assertion fails
+	 */
 	public static <T extends Exception> boolean notNull(@Nullable Object object, T customException) throws T {
 		if (object == null) {
 			throw customException;
@@ -19,6 +26,12 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * Asserts whether object is not null
+	 * @param object Object to check
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 */
 	public static boolean notNull(@Nullable Object object, String message) {
 		return notNull(object, new IllegalArgumentException(message));
 	}
