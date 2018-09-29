@@ -135,16 +135,57 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * Asserts whether c has an ASCII code between 32 and 126 inclusively.
+	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
+	 * allowed, this is still the generally accepted characters.
+	 * The allowed characters are:
+	 * <pre>
+	 *  !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+	 * </pre>
+	 * (There is a space character)
+	 * @param c Character to check
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 * @throws T exception to throw if the assertion fails
+	 */
 	public static <T extends Exception> boolean isAscii(char c, T customException) throws T {
 		return isTrue((int)c > 31 && (int)c < 127, customException);
 	}
 	
 	
+	/**
+	 * Asserts whether c has an ASCII code between 32 and 126 inclusively.
+	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
+	 * allowed, this is still the generally accepted characters.
+	 * The allowed characters are:
+	 * <pre>
+	 *  !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+	 * </pre>
+	 * (There is a space character)
+	 * @param c Character to check
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 */
 	public static boolean isAscii(char c, String message) {
 		return isAscii(c, new IllegalArgumentException(message));
 	}
 	
 	
+	/**
+	 * Asserts whether str is made up of ASCII characters with a code between 32 and 126 inclusively.
+	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
+	 * allowed, this is still the generally accepted characters.
+	 * The allowed characters are:
+	 * <pre>
+	 *  !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+	 * </pre>
+	 * (There is a space character)
+	 * @param str String to check
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 * @throws T exception to throw if the assertion fails
+	 */
 	public static <T extends Exception> boolean isAscii(@NotNull String str, T customException) throws T {
 		notNull(str, "Type checked against must not be null");
 		for (char c : str.toCharArray()) {
@@ -154,6 +195,19 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * Asserts whether str is made up of ASCII characters with a code between 32 and 126 inclusively.
+	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
+	 * allowed, this is still the generally accepted characters.
+	 * The allowed characters are:
+	 * <pre>
+	 *  !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+	 * </pre>
+	 * (There is a space character)
+	 * @param str String to check
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 */
 	public static boolean isAscii(@NotNull String str, String message) {
 		return isAscii(str, new IllegalArgumentException(message));
 	}
