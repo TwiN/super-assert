@@ -15,6 +15,7 @@ public class SuperAssert {
 	 * Asserts whether object is not null
 	 * @param object Object to check
 	 * @param customException Exception to throw if the assertion fails.
+	 * @param <T> Class of the exception to throw if the assertion fails.  
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 */
@@ -41,6 +42,7 @@ public class SuperAssert {
 	 * Asserts whether object is null
 	 * @param object Object to check
 	 * @param customException Exception to throw if the assertion fails.
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 */
@@ -67,6 +69,7 @@ public class SuperAssert {
 	 * Asserts whether a condition/boolean is true
 	 * @param b Boolean to check
 	 * @param customException Exception to throw if the assertion fails.
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 */
@@ -93,6 +96,7 @@ public class SuperAssert {
 	 * Asserts whether a condition/boolean is false
 	 * @param b Boolean to check
 	 * @param customException Exception to throw if the assertion fails.
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 */
@@ -140,12 +144,11 @@ public class SuperAssert {
 	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
 	 * allowed, this is still the generally accepted characters.
 	 * The allowed characters are:
-	 * <pre>
-	 *  !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-	 * </pre>
+	 * <pre> !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~</pre>
 	 * (There is a space character)
 	 * @param c Character to check
 	 * @param customException Exception to throw if the assertion fails.
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 */
@@ -159,9 +162,7 @@ public class SuperAssert {
 	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
 	 * allowed, this is still the generally accepted characters.
 	 * The allowed characters are:
-	 * <pre>
-	 *  !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-	 * </pre>
+	 * <pre> !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~</pre>
 	 * (There is a space character)
 	 * @param c Character to check
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
@@ -177,12 +178,11 @@ public class SuperAssert {
 	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
 	 * allowed, this is still the generally accepted characters.
 	 * The allowed characters are:
-	 * <pre>
-	 *  !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-	 * </pre>
+	 * <pre> !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~</pre>
 	 * (There is a space character)
 	 * @param str String to check
 	 * @param customException Exception to throw if the assertion fails.
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 */
@@ -200,9 +200,7 @@ public class SuperAssert {
 	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
 	 * allowed, this is still the generally accepted characters.
 	 * The allowed characters are:
-	 * <pre>
-	 *  !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-	 * </pre>
+	 * <pre> !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~</pre>
 	 * (There is a space character)
 	 * @param str String to check
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
@@ -217,6 +215,7 @@ public class SuperAssert {
 	 * Asserts whether c is alphanumeric (A-Z, a-z, 0-9)
 	 * @param c Character to check
 	 * @param customException Exception to throw if the assertion fails.
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 */
@@ -240,6 +239,7 @@ public class SuperAssert {
 	 * Asserts whether str is alphanumeric (A-Z, a-z, 0-9)
 	 * @param str String to check
 	 * @param customException Exception to throw if the assertion fails.
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 */
@@ -270,6 +270,7 @@ public class SuperAssert {
 	 * @param minLength Minimum length
 	 * @param maxLength Maximum length
 	 * @param customException Exception to throw if the assertion fails.
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 */
@@ -302,6 +303,7 @@ public class SuperAssert {
 	 * @param str String to check
 	 * @param minLength Minimum length
 	 * @param customException Exception to throw if the assertion fails.
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 */
