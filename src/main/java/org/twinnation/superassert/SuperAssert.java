@@ -89,11 +89,24 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * Asserts whether a condition/boolean is false
+	 * @param b Boolean to check
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 * @throws T exception to throw if the assertion fails
+	 */
 	public static <T extends Exception> boolean isFalse(boolean b, T customException) throws T {
 		return isTrue(!b, customException);
 	}
-
 	
+	
+	/**
+	 * Asserts whether a condition/boolean is false
+	 * @param b Boolean to check
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
+	 */
 	public static boolean isFalse(boolean b, String message) {
 		return isFalse(b, new IllegalArgumentException(message));
 	}
