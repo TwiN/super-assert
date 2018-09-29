@@ -6,6 +6,12 @@ import org.twinnation.superassert.annotation.Nullable;
 import java.util.List;
 
 
+/**
+ * The core class of the super-assert project.
+ *
+ * @author chris
+ * @version 1.0.1
+ */
 public class SuperAssert {
 	
 	private static final int NO_MAX_LENGTH = -1;
@@ -13,11 +19,12 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether object is not null
+	 *
 	 * @param object Object to check
 	 * @param customException Exception to throw if the assertion fails.
-	 * @param <T> Class of the exception to throw if the assertion fails.  
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
 	public static <T extends Exception> boolean notNull(@Nullable Object object, T customException) throws T {
 		if (object == null) {
@@ -29,6 +36,7 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether object is not null
+	 *
 	 * @param object Object to check
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
@@ -40,11 +48,12 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether object is null
+	 *
 	 * @param object Object to check
 	 * @param customException Exception to throw if the assertion fails.
-	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
 	public static <T extends Exception> boolean isNull(@Nullable Object object, T customException) throws T {
 		if (object != null) {
@@ -56,6 +65,7 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether object is null
+	 *
 	 * @param object Object to check
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
@@ -67,11 +77,12 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether a condition/boolean is true
+	 *
 	 * @param b Boolean to check
 	 * @param customException Exception to throw if the assertion fails.
-	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
 	public static <T extends Exception> boolean isTrue(boolean b, T customException) throws T {
 		if (!b) {
@@ -83,6 +94,7 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether a condition/boolean is true
+	 *
 	 * @param b Boolean to check
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
@@ -94,11 +106,12 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether a condition/boolean is false
+	 *
 	 * @param b Boolean to check
 	 * @param customException Exception to throw if the assertion fails.
-	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
 	public static <T extends Exception> boolean isFalse(boolean b, T customException) throws T {
 		return isTrue(!b, customException);
@@ -107,6 +120,7 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether a condition/boolean is false
+	 *
 	 * @param b Boolean to check
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
@@ -116,6 +130,15 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * TODO
+	 *
+	 * @param list a {@link java.util.List} object.
+	 * @param customException a T object.
+	 * @return a boolean.
+	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
+	 */
 	public static <T extends Exception> boolean notEmpty(@NotNull List<?> list, T customException) throws T {
 		if (list.isEmpty()) {
 			throw customException;
@@ -124,16 +147,39 @@ public class SuperAssert {
 	}
 	
 	
+	/**
+	 * TODO
+	 *
+	 * @param list a {@link java.util.List} object.
+	 * @param message a {@link java.lang.String} object.
+	 * @return a boolean.
+	 */
 	public static boolean notEmpty(@NotNull List<?> list, String message) {
 		return notEmpty(list, new IllegalArgumentException(message));
 	}
 	
 	
+	/**
+	 * TODO
+	 *
+	 * @param list a {@link java.util.List} object.
+	 * @param customException a T object.
+	 * @return a boolean.
+	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
+	 */
 	public static <T extends Exception> boolean notEmptyOrNull(@Nullable List<?> list, T customException) throws T {
 		return notNull(list, customException) && notEmpty(list, customException);
 	}
 	
 	
+	/**
+	 * TODO
+	 *
+	 * @param list a {@link java.util.List} object.
+	 * @param message a {@link java.lang.String} object.
+	 * @return a boolean.
+	 */
 	public static boolean notEmptyOrNull(@Nullable List<?> list, String message) {
 		return notNull(list, message) && notEmpty(list, message);
 	}
@@ -143,14 +189,18 @@ public class SuperAssert {
 	 * Asserts whether c has an ASCII code between 32 and 126 inclusively.
 	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
 	 * allowed, this is still the generally accepted characters.
+	 *
 	 * The allowed characters are:
-	 * <pre> !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~</pre>
-	 * (There is a space character)
+	 * <pre>
+	 *     !&#x22;#$%&#x26;\&#x27;()*+,-./0123456789:;&#x3C;=&#x3E;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~
+	 * </pre>
+	 * (Also includes a space character)
+	 *
 	 * @param c Character to check
 	 * @param customException Exception to throw if the assertion fails.
-	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
 	public static <T extends Exception> boolean isAscii(char c, T customException) throws T {
 		return isTrue((int)c > 31 && (int)c < 127, customException);
@@ -161,9 +211,13 @@ public class SuperAssert {
 	 * Asserts whether c has an ASCII code between 32 and 126 inclusively.
 	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
 	 * allowed, this is still the generally accepted characters.
+	 *
 	 * The allowed characters are:
-	 * <pre> !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~</pre>
-	 * (There is a space character)
+	 * <pre>
+	 *     !&#x22;#$%&#x26;\&#x27;()*+,-./0123456789:;&#x3C;=&#x3E;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~
+	 * </pre>
+	 * (Also includes a space character)
+	 *
 	 * @param c Character to check
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
@@ -177,14 +231,18 @@ public class SuperAssert {
 	 * Asserts whether str is made up of ASCII characters with a code between 32 and 126 inclusively.
 	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
 	 * allowed, this is still the generally accepted characters.
+	 *
 	 * The allowed characters are:
-	 * <pre> !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~</pre>
-	 * (There is a space character)
+	 * <pre>
+	 *     !&#x22;#$%&#x26;\&#x27;()*+,-./0123456789:;&#x3C;=&#x3E;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~
+	 * </pre>
+	 * (Also includes a space character)
+	 *
 	 * @param str String to check
 	 * @param customException Exception to throw if the assertion fails.
-	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
 	public static <T extends Exception> boolean isAscii(@NotNull String str, T customException) throws T {
 		notNull(str, "Type checked against must not be null");
@@ -200,8 +258,11 @@ public class SuperAssert {
 	 * While it is true that the name of the method isn't accurate since not all ASCII characters are
 	 * allowed, this is still the generally accepted characters.
 	 * The allowed characters are:
-	 * <pre> !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~</pre>
-	 * (There is a space character)
+	 * <pre>
+	 *     !&#x22;#$%&#x26;\&#x27;()*+,-./0123456789:;&#x3C;=&#x3E;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~
+	 * </pre>
+	 * (Also includes a space character)
+	 *
 	 * @param str String to check
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
@@ -213,11 +274,12 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether c is alphanumeric (A-Z, a-z, 0-9)
+	 *
 	 * @param c Character to check
 	 * @param customException Exception to throw if the assertion fails.
-	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
 	public static <T extends Exception> boolean isAlphanumeric(char c, T customException) throws T {
 		return isTrue(Character.isLetterOrDigit(c), customException);
@@ -226,6 +288,7 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether c is alphanumeric (A-Z, a-z, 0-9)
+	 *
 	 * @param c Character to check
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
@@ -237,11 +300,12 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether str is alphanumeric (A-Z, a-z, 0-9)
+	 *
 	 * @param str String to check
 	 * @param customException Exception to throw if the assertion fails.
-	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
 	public static <T extends Exception> boolean isAlphanumeric(@NotNull String str, T customException) throws T {
 		notNull(str, "Type checked against must not be null");
@@ -254,6 +318,7 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether str is alphanumeric (A-Z, a-z, 0-9)
+	 *
 	 * @param str String to check
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
@@ -266,13 +331,14 @@ public class SuperAssert {
 	/**
 	 * Asserts whether str has a length of at least minLength and at most maxLength.
 	 * If the maximum length is -1, there's no maximum length.
+	 *
 	 * @param str String to check
 	 * @param minLength Minimum length
 	 * @param maxLength Maximum length
 	 * @param customException Exception to throw if the assertion fails.
-	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
 	public static <T extends Exception> boolean hasLength(@NotNull String str, int minLength, int maxLength, T customException) throws T {
 		assert minLength >= 0; // minLength has to be at least 0
@@ -287,6 +353,7 @@ public class SuperAssert {
 	/**
 	 * Asserts whether str has a length of at least minLength and at most maxLength.
 	 * If the maximum length is -1, there's no maximum length.
+	 *
 	 * @param str String to check
 	 * @param minLength Minimum length
 	 * @param maxLength Maximum length
@@ -300,12 +367,13 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether str has a length of at least minLength.
+	 *
 	 * @param str String to check
 	 * @param minLength Minimum length
 	 * @param customException Exception to throw if the assertion fails.
-	 * @param <T> Class of the exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
+	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
 	public static <T extends Exception> boolean hasLength(@NotNull String str, int minLength, T customException) throws T {
 		return hasLength(str, minLength, NO_MAX_LENGTH, customException);
@@ -314,6 +382,7 @@ public class SuperAssert {
 	
 	/**
 	 * Asserts whether str has a length of at least minLength.
+	 *
 	 * @param str String to check
 	 * @param minLength Minimum length
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
