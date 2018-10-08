@@ -346,7 +346,8 @@ SuperAssert.hasLength(password, 8, 32, "Your password must be between 8 and 32 c
 
 ## TODO
 
-**NOTE**: The naming is not fixed. If you have a better idea, feel free to suggest it in your PR or through an issue.
+- Return nothing instead of `true`.
+	- Update tests, documentation and comments accordingly
 
-_The list is currently empty. If you have any idea, feel free to create an issue or a PR_
+<!--- _The list is currently empty. If you have any idea, feel free to create an issue or a PR_ --->
 	
