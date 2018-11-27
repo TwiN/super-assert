@@ -21,10 +21,16 @@ public class NotEmptyOrNullTest {
 	public void notEmptyOrNull_withEmptyList() {
 		SuperAssert.notEmpty(Collections.emptyList(), "EXCEPTION_MESSAGE");
 	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void notEmptyOrNull_withEmptySet() {
+		SuperAssert.notEmpty(Collections.emptySet(), "EXCEPTION_MESSAGE");
+	}
 
 
 	@Test(expected = IllegalArgumentException.class)
-	public void notEmptyOrNull_withNullList() {
+	public void notEmptyOrNull_withNullCollection() {
 		SuperAssert.notEmptyOrNull(null, "EXCEPTION_MESSAGE");
 	}
 
@@ -43,7 +49,7 @@ public class NotEmptyOrNullTest {
 
 
 	@Test(expected = CustomException.class)
-	public void notEmptyOrNull_withCustomExceptionAndNullList() throws Exception {
+	public void notEmptyOrNull_withCustomExceptionAndNullCollection() throws Exception {
 		SuperAssert.notEmptyOrNull(null, new CustomException("CUSTOM_EXCEPTION_MESSAGE"));
 	}
 

@@ -3,7 +3,7 @@ package org.twinnation.superassert;
 import org.twinnation.superassert.annotation.NotNull;
 import org.twinnation.superassert.annotation.Nullable;
 
-import java.util.List;
+import java.util.Collection;
 
 
 /**
@@ -131,16 +131,16 @@ public class SuperAssert {
 	
 	
 	/**
-	 * Asserts whether a list is not empty.
+	 * Asserts whether a collection is not empty.
 	 *
-	 * @param list List to check.
+	 * @param collection Collection to check.
 	 * @param customException Exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
-	public static <T extends Exception> boolean notEmpty(@NotNull List<?> list, T customException) throws T {
-		if (list.isEmpty()) {
+	public static <T extends Exception> boolean notEmpty(@NotNull Collection<?> collection, T customException) throws T {
+		if (collection.isEmpty()) {
 			throw customException;
 		}
 		return true;
@@ -148,40 +148,42 @@ public class SuperAssert {
 	
 	
 	/**
-	 * Asserts whether a list is not empty.
+	 * Asserts whether a collection is not empty.
 	 *
-	 * @param list List to check.
+	 * @param collection Collection to check.
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 */
-	public static boolean notEmpty(@NotNull List<?> list, String message) {
-		return notEmpty(list, new IllegalArgumentException(message));
+	public static boolean notEmpty(@NotNull Collection<?> collection, String message) {
+		return notEmpty(collection, new IllegalArgumentException(message));
 	}
 	
 	
 	/**
-	 * Asserts whether a list is not empty and not null.
+	 * Asserts whether a collection is not empty and not null.
 	 *
-	 * @param list List to check.
+	 * @param collection Collection to check.
 	 * @param customException Exception to throw if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
-	public static <T extends Exception> boolean notEmptyOrNull(@Nullable List<?> list, T customException) throws T {
-		return notNull(list, customException) && notEmpty(list, customException);
+	public static <T extends Exception> boolean notEmptyOrNull(@Nullable Collection<?> collection, T customException) throws T {
+		notNull(collection, customException);
+		return notEmpty(collection, customException);
 	}
 	
 	
 	/**
-	 * Asserts whether a list is not empty and not null.
+	 * Asserts whether a collection is not empty and not null.
 	 *
-	 * @param list List to check.
+	 * @param collection Collection to check.
 	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
 	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 */
-	public static boolean notEmptyOrNull(@Nullable List<?> list, String message) {
-		return notNull(list, message) && notEmpty(list, message);
+	public static boolean notEmptyOrNull(@Nullable Collection<?> collection, String message) {
+		notNull(collection, message);
+		return notEmpty(collection, message);
 	}
 	
 	
