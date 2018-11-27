@@ -35,5 +35,19 @@ public class IsAlphanumericTest {
 	public void isAlphanumeric_withNonAlphanumericCharacter() {
 		SuperAssert.isAlphanumeric(' ', "EXCEPTION_MESSAGE");
 	}
+	
+	
+	@Test(expected = CustomException.class)
+	public void isAlphanumeric_withCustomException() {
+		SuperAssert.isAlphanumeric("hello, world!", new CustomException());
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void isAlphanumeric_withNullStringAndCustomException() {
+		// Because this the str parameter is annotated with @NotNull, you shouldn't expect to have CustomException
+		// here, but instead, IllegalArgumentException
+		SuperAssert.isAlphanumeric(null, new CustomException());
+	}
 
 }

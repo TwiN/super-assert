@@ -60,5 +60,11 @@ public class HasLengthTest {
 	public void hasLength_withNegativeMinLengthParameter() {
 		SuperAssert.hasLength("abc", -1, "EXCEPTION_MESSAGE"); // min cannot be negative
 	}
+	
+	
+	@Test(expected = CustomException.class)
+	public void hasLength_withCustomException() {
+		SuperAssert.hasLength("abc", 6, new CustomException());
+	}
 
 }
