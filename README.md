@@ -1,12 +1,12 @@
 # super-assert
 
-[![Build Status](https://travis-ci.org/TwinProduction/super-assert.svg?branch=master)](https://travis-ci.org/TwinProduction/super-assert)
+[![Build Status](https://travis-ci.org/TwinProduction/super-assert.svg?branch=master)](https://travis-ci.org/TwinProduction/super-assert) [![Coverage Status](https://coveralls.io/repos/github/TwinProduction/super-assert/badge.svg?branch=master)](https://coveralls.io/github/TwinProduction/super-assert?branch=master)
 
 ```xml
 <dependency>
   <groupId>org.twinnation</groupId>
   <artifactId>super-assert</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
