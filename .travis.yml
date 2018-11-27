@@ -10,6 +10,9 @@ install:
 script:
   - "./mvnw clean install -Dgpg.skip"
 
+after_success:
+  - "./mvnw clean test coveralls:report"
+
 cache:
   directories:
     - $HOME/.m2
