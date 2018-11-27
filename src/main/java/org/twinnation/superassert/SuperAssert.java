@@ -131,11 +131,11 @@ public class SuperAssert {
 	
 	
 	/**
-	 * TODO
+	 * Asserts whether a list is not empty.
 	 *
-	 * @param list a {@link java.util.List} object.
-	 * @param customException a T object.
-	 * @return a boolean.
+	 * @param list List to check.
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
@@ -148,11 +148,11 @@ public class SuperAssert {
 	
 	
 	/**
-	 * TODO
+	 * Asserts whether a list is not empty.
 	 *
-	 * @param list a {@link java.util.List} object.
-	 * @param message a {@link java.lang.String} object.
-	 * @return a boolean.
+	 * @param list List to check.
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 */
 	public static boolean notEmpty(@NotNull List<?> list, String message) {
 		return notEmpty(list, new IllegalArgumentException(message));
@@ -160,11 +160,11 @@ public class SuperAssert {
 	
 	
 	/**
-	 * TODO
+	 * Asserts whether a list is not empty and not null.
 	 *
-	 * @param list a {@link java.util.List} object.
-	 * @param customException a T object.
-	 * @return a boolean.
+	 * @param list List to check.
+	 * @param customException Exception to throw if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 * @throws T exception to throw if the assertion fails
 	 * @param <T> Class of the exception to throw if the assertion fails.
 	 */
@@ -174,11 +174,11 @@ public class SuperAssert {
 	
 	
 	/**
-	 * TODO
+	 * Asserts whether a list is not empty and not null.
 	 *
-	 * @param list a {@link java.util.List} object.
-	 * @param message a {@link java.lang.String} object.
-	 * @return a boolean.
+	 * @param list List to check.
+	 * @param message Message to throw as an IllegalArgumentException if the assertion fails.
+	 * @return True if the assertion is positive. Otherwise, an exception will be thrown.
 	 */
 	public static boolean notEmptyOrNull(@Nullable List<?> list, String message) {
 		return notNull(list, message) && notEmpty(list, message);
