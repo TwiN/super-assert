@@ -11,7 +11,7 @@ script:
   - "./mvnw clean install -Dgpg.skip"
 
 after_success:
-  - "./mvnw clean test coveralls:report -DrepoToken=${SECRETS_COVERALLS_SUPERASSERT_TOKEN}"
+  - "./mvnw clean test cobertura:cobertura coveralls:report -DrepoToken=${SECRETS_COVERALLS_SUPERASSERT_TOKEN}"
 
 cache:
   directories:
