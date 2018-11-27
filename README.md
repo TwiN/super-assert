@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/TwinProduction/super-assert.svg?branch=master)](https://travis-ci.org/TwinProduction/super-assert)
 
+[![Coverage Status](https://coveralls.io/repos/github/TwinProduction/super-assert/badge.svg?branch=master)](https://coveralls.io/github/TwinProduction/super-assert?branch=master)
+
 ```xml
 <dependency>
   <groupId>org.twinnation</groupId>
