@@ -10,7 +10,7 @@ import java.util.Collection;
  * The core class of the super-assert project.
  *
  * @author chris
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class SuperAssert {
 	
